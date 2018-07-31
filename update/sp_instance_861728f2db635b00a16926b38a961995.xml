@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">4953acbedb235b00a16926b38a961930</sp_column>
+        <sp_widget display_value="SNUG Registration">6fd660f2db635b00a16926b38a96197b</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>matt.dodd</sys_created_by>
+        <sys_created_on>2018-07-30 13:58:51</sys_created_on>
+        <sys_id>861728f2db635b00a16926b38a961995</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>ServiceNow User Group - Perth</sys_name>
+        <sys_package display_value="SNUG Registrations" source="x_snc_snug_rego">8ff1a8b6db235b00a16926b38a96192b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SNUG Registrations">8ff1a8b6db235b00a16926b38a96192b</sys_scope>
+        <sys_update_name>sp_instance_861728f2db635b00a16926b38a961995</sys_update_name>
+        <sys_updated_by>matt.dodd</sys_updated_by>
+        <sys_updated_on>2018-07-30 14:03:47</sys_updated_on>
+        <title>ServiceNow User Group - Perth</title>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"title": {
+		"value": "ServiceNow User Group - Perth",
+		"displayValue": "ServiceNow User Group - Perth"
+	},
+	"title_secondary": {
+		"value": "SNUG Registration Page",
+		"displayValue": "SNUG Registration Page"
+	},
+	"company_name": {
+		"value": "ServiceNow",
+		"displayValue": "ServiceNow"
+	},
+	"company_street": {
+		"value": "Level 27, 44 St Georges Tce",
+		"displayValue": "Level 27, 44 St Georges Tce"
+	},
+	"company_city_zip": {
+		"value": "Perth 6000",
+		"displayValue": "Perth 6000"
+	},
+	"company_phone": {
+		"value": "",
+		"displayValue": ""
+	},
+	"contact_name": {
+		"value": "Matt Dodd",
+		"displayValue": "Matt Dodd"
+	},
+	"contact_email": {
+		"value": "matt.dodd@servicenow.com",
+		"displayValue": "matt.dodd@servicenow.com"
+	},
+	"description_placeholder": {
+		"value": "",
+		"displayValue": ""
+	},
+	"form_header": {
+		"value": "August 9th @ 4pm - Location TBD",
+		"displayValue": "August 9th @ 4pm - Location TBD"
+	},
+	"form_message": {
+		"value": "Please complete your details to register your attendance",
+		"displayValue": "Please complete your details to register your attendance"
+	},
+	"pass_characters": {
+		"value": "",
+		"displayValue": ""
+	},
+	"pass_length": {
+		"value": null,
+		"displayValue": ""
+	},
+	"pass_reset_desc": {
+		"value": "",
+		"displayValue": ""
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=861728f2db635b00a16926b38a961995"/>
+</record_update>

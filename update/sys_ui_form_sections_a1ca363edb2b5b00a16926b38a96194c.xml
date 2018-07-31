@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_form_sections form_id="a1ca363edb2b5b00a16926b38a96194c" sys_domain="global" table="x_snc_snug_rego_snug_event" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>matt.dodd</sys_created_by>
+            <sys_created_on>2018-07-31 00:44:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>b9ca363edb2b5b00a16926b38a96194e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_snc_snug_rego_snug_event" name="x_snc_snug_rego_snug_event" sys_domain="global" view="Default view">a1ca363edb2b5b00a16926b38a96194c</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snug_rego_snug_event" sys_domain="global" view="Default view">f4a5e472db635b00a16926b38a9619f1</sys_ui_section>
+            <sys_updated_by>matt.dodd</sys_updated_by>
+            <sys_updated_on>2018-07-31 00:44:05</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_snc_snug_rego_snug_event</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>matt.dodd</sys_created_by>
+            <sys_created_on>2018-07-31 00:44:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a1ca363edb2b5b00a16926b38a96194c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_snug_rego_snug_event</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="SNUG Registrations" source="x_snc_snug_rego">8ff1a8b6db235b00a16926b38a96192b</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="SNUG Registrations">8ff1a8b6db235b00a16926b38a96192b</sys_scope>
+            <sys_update_name>sys_ui_form_sections_a1ca363edb2b5b00a16926b38a96194c</sys_update_name>
+            <sys_updated_by>matt.dodd</sys_updated_by>
+            <sys_updated_on>2018-07-31 00:44:05</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

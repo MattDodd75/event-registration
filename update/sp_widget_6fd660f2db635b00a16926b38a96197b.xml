@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function(spUtil, $scope, $uibModal, $uibModalStack, $window) {
+	/* widget controller */
+	var c = this;
+
+	c.captchaVerified = false;
+	c.policy = false;
+	c.showSubmit = true;
+	c.showHomeButton = false;
+	c.showSuccessMessage = false;
+	c.data.issueType = "What can we help you with?";
+
+
+	CustomEvent.observe('sn_csm_captcha_verified', function(captcha_value) {
+		c.captchaVerified = captcha_value;
+		scope.$apply();	
+	});
+
+	c.disableSubmit = function(){
+		//no captcha needed for logged in user
+		if(c.data.hasContactRecord) {
+			return !(c.data.first_name && c.data.last_name && c.data.email && c.data.phone && c.data.description && c.data.issueType != "What can we help you with?");
+		} else {
+			return !(c.captchaVerified == true && c.data.first_name && c.data.last_name && c.data.email && c.data.phone && c.data.description && c.data.issueType != "What can we help you with?");
+		}
+		
+	};
+
+	$scope.closeModal = function(reason) {
+		$uibModalStack.dismissAll(reason);
+	};
+
+	c.setFocus = function() {
+		c.data.email = "";
+		var element = $window.document.getElementById("contact-email");
+		element.focus();
+		c.showUserDuplicateMessage = false;
+		c.showSubmit = true;
+	};
+
+	c.hideAlert = function() {
+		c.showUserDuplicateMessage = false;
+		c.showSubmit = true;
+	};
+
+	c.submitForm = function(isValid) {
+		c.submitted = true;
+		if(isValid) { 
+
+			c.showCaseErrorMessage = false;
+			c.showCaseSuccessMessage = false;
+			c.showUserCreationMessage = false;
+			c.showUserDuplicateMessage = false;
+			c.data.action = "submit_form";
+
+			c.server.update().then(function(response) {
+				if(response.case_status == "success") { 
+					c.showCaseSuccessMessage = true;
+					c.new_record_display = response.new_record_display;
+					c.new_record_url = response.new_record_url;
+					c.showSubmit = false;
+					c.showHomeButton = true;
+
+				} else {
+					c.showCaseErrorMessage = true;
+				}
+
+				if(response.user_status == "user_exists") {
+					c.showSubmit = false;
+					c.showUserDuplicateMessage = true;				
+
+				} else if(response.user_status == "user_registered") {
+					c.showUserCreationMessage = true;
+				}
+			});
+		}
+	};
+
+	//Create Case function if user exists but is not logged in and the user wants to create without logging in
+	c.createCase = function(isValid) {
+
+		c.showCaseErrorMessage = false;
+		c.showCaseSuccessMessage = false;
+		c.showUserCreationMessage = false;
+		c.showUserDuplicateMessage = false;
+		c.data.action = "create_case";
+
+		c.server.update().then(function(response) {
+			if(response.case_status == "success") { 
+				c.showCaseSuccessMessage = true;
+				c.new_record_display = response.new_record_display;
+				c.new_record_url = response.new_record_url;
+				c.showSubmit = false;
+				c.showHomeButton = true;
+
+			} else {
+				c.showCaseErrorMessage = true;
+			}
+
+		});
+	};
+	
+	c.redirectHome = function() {
+		$window.location.href = "/csm";	
+	};
+
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #888;
+  line-height: 30px;
+  text-align: center;
+}
+
+.noresize {
+  resize: none;
+}
+
+.nopadding {
+  padding-left: 0px !important;
+}
+
+.contact-left-field {
+  padding:0;
+  margin-bottom:20px;
+}
+
+.contact-right-field {
+  padding-right:0px;
+}
+
+
+a, a:hover, a:focus {
+  color: #19b9e7;
+  text-decoration: none;
+  -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+h1, h2 {
+  margin-top: 10px;
+  font-size: 38px;
+  font-weight: 100;
+  color: #555;
+  line-height: 50px;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 300;
+  color: #555;
+  line-height: 30px;
+}
+
+img { 
+  max-width: 100%;
+  opacity:0.2;
+}
+
+::-moz-selection { background: #19b9e7; color: #fff; text-shadow: none; }
+::selection { background: #19b9e7; color: #fff; text-shadow: none; }
+
+
+.btn-link-1 {
+  display: inline-block;
+  height: 50px;
+  margin: 0 5px;
+  padding: 16px 20px 0 20px;
+  background: #19b9e7;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 16px;
+  color: #fff;
+  -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+}
+.btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active { outline: 0; opacity: 0.6; color: #fff; }
+
+.btn-link-2 {
+  display: inline-block;
+  height: 50px;
+  margin: 0 5px;
+  padding: 15px 20px 0 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #fff;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 16px;
+  color: #fff;
+  -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+}
+.btn-link-2:hover, .btn-link-2:focus, 
+.btn-link-2:active, .btn-link-2:active:focus { outline: 0; opacity: 0.6; background: rgba(0, 0, 0, 0.3); color: #fff; }
+
+
+/***** Top menu *****/
+
+.navbar {
+  padding-top: 10px;
+  background: #333;
+  background: rgba(51, 51, 51, 0.3);
+  border: 0;
+  -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+.navbar.navbar-no-bg { background: none; }
+
+ul.navbar-nav {
+  font-size: 16px;
+  color: #fff;
+}
+
+.navbar-inverse ul.navbar-nav li { padding-top: 8px; padding-bottom: 8px; }
+
+.navbar-inverse ul.navbar-nav li .li-text { opacity: 0.8; }
+
+.navbar-inverse ul.navbar-nav li a { display: inline; padding: 0; color: #fff; }
+.navbar-inverse ul.navbar-nav li a:hover { color: #fff; opacity: 1; border-bottom: 1px dotted #fff; }
+.navbar-inverse ul.navbar-nav li a:focus { color: #fff; outline: 0; opacity: 1; border-bottom: 1px dotted #fff; }
+
+.navbar-inverse ul.navbar-nav li .li-social a {
+  margin: 0 5px;
+  font-size: 28px;
+  vertical-align: middle;
+}
+.navbar-inverse ul.navbar-nav li .li-social a:hover, 
+.navbar-inverse ul.navbar-nav li .li-social a:focus { border: 0; color: #19b9e7; }
+
+.navbar-brand {
+  width: 113px;
+  background: url(/contact_logo.png) left center no-repeat;
+  text-indent: -99999px;
+}
+
+
+/***** Top content *****/
+
+.inner-bg {
+  padding: 40px 0 170px 0;
+}
+
+.top-content .text {
+  color: #fff;
+}
+
+.top-content .text h1 { color: #fff; }
+
+.top-content .description {
+  margin: 20px 0 10px 0;
+}
+
+.top-content .description p { opacity: 0.8; }
+
+.top-content .description a {
+  color: #fff;
+}
+.top-content .description a:hover, 
+.top-content .description a:focus { border-bottom: 1px dotted #fff; }
+
+.top-content .top-big-link {
+  margin-top: 35px;
+}
+
+.form-box {
+  padding-top: 40px;
+}
+
+.form-top {
+  overflow: hidden;
+  padding: 0 25px 15px 25px;
+  background: #fff;
+  -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
+  text-align: left;
+}
+
+.form-top-left {
+  float: left;
+  width: 75%;
+  padding-top: 25px;
+}
+
+.form-top-left h3 { margin-top: 0; }
+
+.form-top-right {
+  float: left;
+  width: 25%;
+  padding-top: 5px;
+  font-size: 66px;
+  color: #ddd;
+  line-height: 100px;
+  text-align: right;
+}
+
+.form-bottom {
+  padding: 25px;
+  background: #eee;
+  -moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
+  text-align: left;
+}
+
+.form-bottom form textarea {
+  height: 100px;
+}
+
+.form-bottom form .input-error {
+  border-color: #19b9e7;
+}
+
+
+/***** Media queries *****/
+
+@media (min-width: 1200px) {
+
+  .dropdown-menu {
+    width:700px;
+    text-align:center;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+  .dropdown-menu {
+    width:567px;
+    text-align:center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .dropdown-menu {
+    width:420px;
+    text-align:center;
+  }
+
+  .contact-right-field {
+    padding-right:0px;
+    padding-left:0px;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .navbar { padding-top: 0; }
+  .navbar.navbar-no-bg { background: #333; background: rgba(51, 51, 51, 0.9); }
+  .navbar-brand { height: 60px; margin-left: 15px; }
+  .navbar-collapse { border: 0; }
+  .navbar-toggle { margin-top: 12px; }
+
+  .inner-bg { padding: 40px 0 110px 0; }
+  .top-content .top-big-link { margin-top: 25px; }
+  .top-content .top-big-link a.btn { margin-top: 10px; }
+
+  .dropdown-menu {
+    width:625px;
+    text-align:center;
+  }
+
+  .contact-right-field {
+    padding-right:0px;
+    padding-left:0px;
+  }
+}
+
+@media (max-width: 415px) {
+
+  h1, h2 { font-size: 32px; }
+
+  .dropdown-menu {
+    width:275px;
+    text-align:center;
+  }
+}
+
+
+/* Retina-ize images/icons */
+
+@media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+
+    /* logo */
+    .navbar-brand {
+      background-image: url(/logo@2x.png) !important; background-repeat: no-repeat !important; background-size: 113px 32px !important;
+    }
+
+  }
+
+input[type="text"], 
+textarea, 
+textarea.form-control,
+select,
+select.form-control {
+  height: 50px;
+  margin: 0;
+  padding: 0 20px;
+  vertical-align: middle;
+  background: #f8f8f8;
+  border: 3px solid #ddd;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 50px;
+  color: #888;
+  -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+  -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+  -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+.input-has-error {
+  border: 3px solid $brand-primary !important;
+}
+
+textarea, 
+textarea.form-control,
+select,
+select.form-control {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 30px;
+}
+
+input[type="text"]:focus, 
+textarea:focus, 
+textarea.form-control:focus,
+select:focus,
+select.form-control:focus {
+  outline: 0;
+  background: #fff;
+  border: 3px solid #ccc;
+  -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+}
+
+input[type="text"]:-moz-placeholder, textarea:-moz-placeholder, textarea.form-control:-moz-placeholder { color: #888; }
+input[type="text"]:-ms-input-placeholder, textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder { color: #888; }
+input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #888; }
+
+
+button.btn-alert {
+  font-size: 13px;
+  font-weight: 200;
+  height: 30px;
+  line-height: 20px;
+  margin: 0;
+  padding: 0 20px;
+  vertical-align: middle;
+  //background: #19b9e7;
+  border: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+  text-shadow: none;
+  -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+  -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+.alert-buttons {
+  padding-top: 10px;
+}
+
+button.btn-dropdown { 
+  height: 50px;
+  margin: 0;
+  padding: 0 20px;
+  vertical-align: middle;
+  //background: #19b9e7;
+  border: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 50px;
+  color: #fff;
+  -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+  text-shadow: none;
+  -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+  -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+button.btn {
+  height: 80px;
+  margin: 0;
+  padding: 0 20px;
+  vertical-align: middle;
+  //background: #19b9e7;
+  border: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 50px;
+  color: #fff;
+  -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+  text-shadow: none;
+  -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+  -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+.panel {
+    border: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+
+
+button.btn:hover { opacity: 0.6; color: #fff; }
+
+button.btn:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+
+button.btn:focus { outline: 0; opacity: 0.6; background: #19b9e7; color: #fff; }
+
+button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; background: #19b9e7; color: #fff; }
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>snug_registration</id>
+        <internal>false</internal>
+        <link/>
+        <name>SNUG Registration</name>
+        <option_schema>[{"name":"title","label":"Title","type":"string"},{"name":"title_secondary","label":"Title Secondary","type":"string"},{"name":"company_name","label":"Company Name","type":"string"},{"name":"company_street","label":"Company Street","type":"string"},{"name":"company_city_zip","label":"Company City/ZIP","type":"string"},{"name":"company_phone","label":"Company Phone","type":"string"},{"name":"contact_name","label":"Contact Name","type":"string"},{"name":"contact_email","label":"Contact E-Mail","type":"string"},{"name":"description_placeholder","label":"Description Placeholder","type":"string"},{"name":"form_header","label":"Form Header","type":"string"},{"name":"form_message","label":"Form Message","type":"string"},{"name":"pass_characters","label":"Pass Reset Characters","type":"string"},{"name":"pass_length","label":"Pass Reset Length","type":"integer"},{"name":"pass_reset_desc","label":"Pass Reset Description","type":"string"}]</option_schema>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */	
+
+	//If Form is loading and the user is logged in, populate form with fields from the contact record
+	if(!input) {
+		data.hasContactRecord = false;
+	}
+
+	//Execute when form is submitted
+	if(input && input.action == "submit_form") {	
+		//get company name for messages
+		//data.company_name = gs.getProperty('glide.cs.company_name');
+
+		//if user is not logged in verify if there is a contact record for the input email address
+		var existingUserId = verifyContactRecord();
+		if(existingUserId != 0) {				
+			//createCase(existingUserId);
+			data.user_status = "user_exists";
+		} else {
+			var newContactId = createContact();		
+			//createCase(newContactId);
+			data.user_status = "user_registered";
+		}
+	}
+
+	//Check if the email address is already being used
+	function verifyContactRecord() {
+		var grContact = new GlideRecord("x_snc_snug_rego_snug_registrations");
+		if(grContact.get("email", input.email)) {
+			return grContact.getUniqueValue();
+		} else {
+			return 0;
+		}	
+	}
+
+	//Create New Contact in the Customer Contact table
+	function createContact() {
+		var grNewContact = new GlideRecord("x_snc_snug_rego_snug_registrations");
+		grNewContact.initialize();
+		grNewContact.setValue("first_name", input.first_name);
+		grNewContact.setValue("last_name", input.last_name);
+		grNewContact.setValue("email", input.email);
+		grNewContact.setValue("phone", input.phone);
+		grNewContact.setValue("company", input.company);
+		grNewContact.setValue("u_creation_type", "case_creation_form");		
+		var newContactSysId = grNewContact.insert();
+		//gs.addInfoMessage("Thank you for registering. We look forward to seeing you there.")
+		//	gs.eventQueue("service_portal.csm.new_account", grNewContact, grNewContact.email, newUserPass);
+		return newContactSysId;
+	}
+
+
+
+})();
+
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>matt.dodd</sys_created_by>
+        <sys_created_on>2018-07-30 13:57:51</sys_created_on>
+        <sys_id>6fd660f2db635b00a16926b38a96197b</sys_id>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_name>SNUG Registration</sys_name>
+        <sys_package display_value="SNUG Registrations" source="x_snc_snug_rego">8ff1a8b6db235b00a16926b38a96192b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SNUG Registrations">8ff1a8b6db235b00a16926b38a96192b</sys_scope>
+        <sys_update_name>sp_widget_6fd660f2db635b00a16926b38a96197b</sys_update_name>
+        <sys_updated_by>matt.dodd</sys_updated_by>
+        <sys_updated_on>2018-07-31 00:36:06</sys_updated_on>
+        <template><![CDATA[<!-- Top content -->
+<!-- @TODO: ADD FORM VALIDATION -->
+<div class="top-content">
+
+  <div class="inner-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 text">
+          <h1><strong>{{c.options.title}}</strong> <br/>{{c.options.title_secondary}}</h1>          
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 form-box">
+          <div class="form-top">
+            <div class="form-top-left">
+              <h3>{{c.options.form_header}}</h3>
+              <p>{{c.options.form_message}}</p>
+            </div>
+            <div class="form-top-right">
+              <i class="fa fa-envelope"></i>
+            </div>
+          </div>
+          <div class="form-bottom contact-form">
+            <form name="case_creation" role="form" novalidate>
+              <div class="form-group">
+
+                <div class="col-md-6 contact-left-field" ng-class="{ 'has-error has-feedback' : case_creation.first_name.$invalid && c.submitted}">
+                  <input type="text"
+                         name="first_name"
+                         id="first_name"
+                         placeholder="First Name" 
+                         class="form-control" 
+                         ng-model="c.data.first_name"
+                         ng-disabled="c.data.hasContactRecord"
+                         ng-required="true"
+                         ng-class="{ 'input-has-error' : case_creation.first_name.$invalid && c.submitted}">
+                  <p ng-show="case_creation.first_name.$invalid && c.submitted" class="help-block">Your First Name is required.</p>     
+                  <!--<span ng-show="case_creation.first_name.$invalid && c.submitted" id="errorIcon" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>-->
+                </div>
+
+                <div class="col-md-6 contact-right-field" ng-class="{ 'has-error has-feedback' : case_creation.last_name.$invalid && c.submitted}">
+                  <input type="text" 
+                         name="last_name"
+                         id="last_name"
+                         placeholder="Last Name"
+                         class="form-control" 
+                         ng-model="c.data.last_name"
+                         ng-disabled="c.data.hasContactRecord"
+                         ng-required="true" 
+                         ng-class="{ 'input-has-error' : case_creation.last_name.$invalid && c.submitted}">
+                  <p ng-show="case_creation.last_name.$invalid && c.submitted" class="help-block">Your Last Name is required.</p>     
+
+                </div>
+              </div>
+              
+              <div class="form-group" ng-class="{ 'has-error' : case_creation.email.$invalid && c.submitted}">
+                <label class="sr-only" for="contact-email">Company</label>
+                <input type="text" 
+                       name="company" 
+                       placeholder="Company" 
+                       class="contact-company form-control" 
+                       id="contact-company"
+                       ng-model="c.data.company"
+                       ng-disabled="c.data.hasContactRecord"
+                       ng-change="c.hideAlert()"
+                       ng-required="true" 
+                       ng-class="{ 'input-has-error' : case_creation.company.$invalid && c.submitted}">
+                <p ng-show="case_creation.company.$invalid && c.submitted" class="help-block">Enter a valid company name.</p>
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-error' : case_creation.email.$invalid && c.submitted}">
+                <label class="sr-only" for="contact-email">Email</label>
+                <input type="text" 
+                       name="email" 
+                       placeholder="Email" 
+                       class="contact-email form-control" 
+                       id="contact-email"
+                       ng-model="c.data.email"
+                       ng-disabled="c.data.hasContactRecord"
+                       ng-change="c.hideAlert()"
+                       ng-required="true" 
+                       ng-class="{ 'input-has-error' : case_creation.email.$invalid && c.submitted}"
+                       ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/">
+                <p ng-show="case_creation.email.$invalid && c.submitted" class="help-block">Enter a valid email.</p>
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-error has-feedback' : case_creation.phone.$invalid && c.submitted}">
+                <input type="text" 
+                       name="phone" 
+                       id="phone"
+                       placeholder="Phone Number" 
+                       class="form-control" 
+                       ng-model="c.data.phone"
+                       ng-disabled="c.data.hasContactRecord"
+                       ng-required="false" 
+                       ng-class="{ 'input-has-error' : case_creation.phone.$invalid && c.submitted}">
+                <!-- ng-pattern="/^\+?\d{10,14}$/g" //pattern for the phone number, needs some more work -->
+                <p ng-show="case_creation.phone.$invalid && c.submitted" class="help-block">Enter a valid phone number.</p>
+              </div>              
+
+              <!-- Alert Messages -->
+              <div class="messages">
+                <div role="alert" class="alert alert-success" ng-show="c.showCaseSuccessMessage">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                  <span><strong>Thank you for registering!</strong> We look forward to seeing you there.</span>
+                </div>
+                <div role="alert" class="alert alert-info" ng-show="c.showUserCreationMessage">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                  <span>Thank you for registering for the event. We look forward to seeing you there.</span>
+                </div>
+                <div role="alert" class="alert alert-danger" ng-show="c.showUserDuplicateMessage">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+
+                  <span>It looks like there is already someone registered with the email address ({{c.data.email}}).</span>
+
+                  <div class="alert-buttons">
+                    <button type="submit" class="btn-alert btn-primary" ng-click="c.setFocus()">${Change E-Mail}</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Google Recaptcha -->
+              <div id="captcha_form_group" class="form-group" ng-if="!c.data.hasContactRecord">
+                <div class="col-md-6 nopadding" ng-class="{ 'has-error' : case_creation.captchaVerified.$invalid && c.submitted}">
+                  <input ng-model="c.captchaVerified"
+                         type="checkbox"
+                         name="captchaVerified"
+                         id="captchaVerified"
+                         style="display:none;"
+                         class="form-control"
+                         ng-required="!c.data.hasContactRecord" 
+                         ng-class="{ 'input-has-error' : case_creation.captchaVerified.$invalid && c.submitted}">                  
+                  <span>
+                    <div class="g-recaptcha" id="html_element"></div>
+                    <span class="help-block" id="retype_captcha"></span>
+                  </span>
+                  <p ng-show="case_creation.captchaVerified.$invalid && c.submitted" class="help-block"><strong>${Please use the Captcha to confirm you are not a robot.}</strong></p>     
+                </div>
+                <div class="col-md-6 nopadding">                  
+                  <button type="submit" class="btn btn-primary" ng-click="c.submitForm(case_creation.$valid)" ng-show="c.showSubmit" style="width: 100%">${Register}</button>
+                  <button type="submit" class="btn btn-primary" ng-click="c.redirectHome()" ng-show="c.showHomeButton">${Home}</button>
+                </div>                
+              </div>
+
+              <div class="clearfix">
+              </div>
+
+              <div id="captcha-form-group-with-record" class="form-group" ng-if="c.data.hasContactRecord">
+                <div class="col-md-12 nopadding">                  
+                  <button type="submit" class="btn btn-primary" ng-click="c.submitForm(case_creation.$valid)" ng-show="c.showSubmit" style="width: 100%">${Register}</button>
+                  <button type="submit" class="btn btn-primary" ng-click="c.redirectHome()" ng-show="c.showHomeButton">${Home}</button>
+                </div>                
+              </div>
+
+              <div class="clearfix">
+              </div>
+            </form>
+          </div>
+        </div>
+<!--        <div class="col-sm-8 form-box">
+          <div class="form-top">
+            <div class="form-top-left">
+              <legend>Our office</legend>
+              <address>
+                <strong>{{c.options.company_name}}</strong><br>
+                {{c.options.company_street}}<br>
+                {{c.options.company_city_zip}}<br>
+                <abbr title="Phone" style="padding-right: 3px">
+                  <i class="fa fa-phone" aria-hidden="true"></i></abbr>
+                {{c.options.company_phone}}
+              </address>
+              <address ng-if="c.options.contact_name || c.options.contact_email">
+                <strong>{{c.options.contact_name}}</strong><br>
+                <abbr title="Mail" style="padding-right: 3px">
+                  <i class="fa fa-envelope" aria-hidden="true"></i></abbr><a href="mailto:{{c.options.contact_email}}">{{c.options.contact_email}}</a>
+              </address>
+            </div>
+            <div class="form-top-right">
+              <i class="fa fa-globe" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer> </script>
+<script>
+  var onloadCallback = function() {
+    var captchaVerified;
+    var captchaWidget;
+
+    var verifyCallback = function(grc) {
+      if ((grc == "") || (grc == undefined))
+        captchaVerified = false;
+      else 
+        captchaVerified = true;
+      jQuery("#captchaVerified").attr("value",captchaVerified);
+
+      CustomEvent.fireAll('sn_csm_captcha_verified',captchaVerified);
+    };
+    captchaWidget = grecaptcha.render('html_element', {
+      'sitekey' : "6LeiwAYTAAAAAAscPMJuMno9Tbwt3KXqSEPmQhu2",
+      'callback' : verifyCallback,
+      'theme' : 'light',
+      'expired-callback' :  captchaExpired
+    });
+  };
+  var captchaExpired = function(){
+    captchaVerified = false;
+    jQuery("#captchaVerified").attr("value",captchaVerified);
+
+    CustomEvent.fireAll('sn_csm_captcha_verified',captchaVerified);
+  };
+</script>]]></template>
+    </sp_widget>
+</record_update>

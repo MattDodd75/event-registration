@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="SNUG Event" max_length="40" name="x_snc_snug_rego_snug_event" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Community URL" max_length="1024" name="community_url" type="url"/>
+        <element display="true" label="Event Name" mandatory="true" max_length="100" name="event_name" reference="x_snc_snug_rego_snug_event" type="string"/>
+        <element label="Event Start" mandatory="true" max_length="40" name="event_start" type="glide_date_time"/>
+        <element label="Location" max_length="150" name="location" type="string"/>
+    </element>
+</database>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="SNUG Registrations" max_length="40" name="x_snc_snug_rego_snug_registrations" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Community URL" max_length="1024" name="community_url" type="url"/>
+        <element label="Company" mandatory="true" max_length="50" name="company" type="string"/>
+        <element label="Email" mandatory="true" max_length="100" name="email" type="string"/>
+        <element default="4486ecb2db635b00a16926b38a961900" label="Event" mandatory="true" max_length="40" name="event" reference="x_snc_snug_rego_snug_event" type="reference"/>
+        <element label="First Name" mandatory="true" max_length="40" name="first_name" type="string"/>
+        <element label="Last Name" mandatory="true" max_length="40" name="last_name" type="string"/>
+        <element label="Phone" max_length="15" name="phone" type="string"/>
+    </element>
+</database>

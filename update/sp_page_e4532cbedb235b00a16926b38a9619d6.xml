@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <css/>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <id>snug_registration</id>
+        <internal>false</internal>
+        <public>true</public>
+        <roles/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>matt.dodd</sys_created_by>
+        <sys_created_on>2018-07-30 13:42:22</sys_created_on>
+        <sys_id>e4532cbedb235b00a16926b38a9619d6</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>snug_registration</sys_name>
+        <sys_package display_value="SNUG Registrations" source="x_snc_snug_rego">8ff1a8b6db235b00a16926b38a96192b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SNUG Registrations">8ff1a8b6db235b00a16926b38a96192b</sys_scope>
+        <sys_update_name>sp_page_e4532cbedb235b00a16926b38a9619d6</sys_update_name>
+        <sys_updated_by>matt.dodd</sys_updated_by>
+        <sys_updated_on>2018-07-30 13:42:38</sys_updated_on>
+        <title>SNUG Registration</title>
+    </sp_page>
+    <sys_translated_text action="delete_multiple" query="documentkey=e4532cbedb235b00a16926b38a9619d6"/>
+</record_update>
