@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="type" table="x_snc_snug_rego_snug_registrations" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>ServiceNow/Internal</label>
+            <language>en</language>
+            <name>x_snc_snug_rego_snug_registrations</name>
+            <sequence>100</sequence>
+            <sys_created_by>matt.dodd</sys_created_by>
+            <sys_created_on>2018-08-02 09:07:07</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>95010f2fdbefdb00a16926b38a9619f1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>matt.dodd</sys_updated_by>
+            <sys_updated_on>2018-08-02 09:07:07</sys_updated_on>
+            <value>servicenow</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Partner</label>
+            <language>en</language>
+            <name>x_snc_snug_rego_snug_registrations</name>
+            <sequence>200</sequence>
+            <sys_created_by>matt.dodd</sys_created_by>
+            <sys_created_on>2018-08-02 09:07:29</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>73110f2fdbefdb00a16926b38a9619f5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>matt.dodd</sys_updated_by>
+            <sys_updated_on>2018-08-02 09:07:29</sys_updated_on>
+            <value>partner</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Customer</label>
+            <language>en</language>
+            <name>x_snc_snug_rego_snug_registrations</name>
+            <sequence>300</sequence>
+            <sys_created_by>matt.dodd</sys_created_by>
+            <sys_created_on>2018-08-02 09:07:45</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>50318f2fdbefdb00a16926b38a9619f6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>matt.dodd</sys_updated_by>
+            <sys_updated_on>2018-08-02 09:07:45</sys_updated_on>
+            <value>customer</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Prospect</label>
+            <language>en</language>
+            <name>x_snc_snug_rego_snug_registrations</name>
+            <sequence>400</sequence>
+            <sys_created_by>matt.dodd</sys_created_by>
+            <sys_created_on>2018-08-02 09:08:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7241436fdbefdb00a16926b38a96194d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>matt.dodd</sys_updated_by>
+            <sys_updated_on>2018-08-02 09:08:11</sys_updated_on>
+            <value>prospect</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>type</element>
+            <name>x_snc_snug_rego_snug_registrations</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>matt.dodd</sys_created_by>
+            <sys_created_on>2018-08-02 09:07:07</sys_created_on>
+            <sys_id>b5114f2fdbefdb00a16926b38a9619bf</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>type</sys_name>
+            <sys_package display_value="SNUG Registrations" source="x_snc_snug_rego">8ff1a8b6db235b00a16926b38a96192b</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="SNUG Registrations">8ff1a8b6db235b00a16926b38a96192b</sys_scope>
+            <sys_update_name>sys_choice_x_snc_snug_rego_snug_registrations_type</sys_update_name>
+            <sys_updated_by>matt.dodd</sys_updated_by>
+            <sys_updated_on>2018-08-02 09:07:07</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

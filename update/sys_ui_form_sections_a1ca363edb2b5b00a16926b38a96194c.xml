@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update>
+<?xml version="1.0" encoding="UTF-8"?><record_update>
     <sys_ui_form_sections form_id="a1ca363edb2b5b00a16926b38a96194c" sys_domain="global" table="x_snc_snug_rego_snug_event" version="3">
         <sys_ui_form_section action="INSERT_OR_UPDATE">
             <position>0</position>

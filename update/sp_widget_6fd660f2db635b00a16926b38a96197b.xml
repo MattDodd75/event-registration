@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update table="sp_widget">
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
         <client_script><![CDATA[function(spUtil, $scope, $uibModal, $uibModalStack, $window) {
@@ -527,7 +526,7 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
         <internal>false</internal>
         <link/>
         <name>SNUG Registration</name>
-        <option_schema>[{"name":"title","label":"Title","type":"string"},{"name":"title_secondary","label":"Title Secondary","type":"string"},{"name":"company_name","label":"Company Name","type":"string"},{"name":"company_street","label":"Company Street","type":"string"},{"name":"company_city_zip","label":"Company City/ZIP","type":"string"},{"name":"company_phone","label":"Company Phone","type":"string"},{"name":"contact_name","label":"Contact Name","type":"string"},{"name":"contact_email","label":"Contact E-Mail","type":"string"},{"name":"description_placeholder","label":"Description Placeholder","type":"string"},{"name":"form_header","label":"Form Header","type":"string"},{"name":"form_message","label":"Form Message","type":"string"},{"name":"pass_characters","label":"Pass Reset Characters","type":"string"},{"name":"pass_length","label":"Pass Reset Length","type":"integer"},{"name":"pass_reset_desc","label":"Pass Reset Description","type":"string"}]</option_schema>
+        <option_schema>[{"name":"title","section":"other","label":"Title","type":"string"},{"name":"title_secondary","section":"other","label":"Title Secondary","type":"string"},{"name":"form_header","section":"other","label":"Form Header","type":"string"},{"name":"form_message","section":"other","label":"Form Message","type":"string"},{"name":"event_location","section":"other","label":"Event Location","type":"string"},{"name":"event_date","section":"other","label":"Event Date","type":"string"},{"name":"location_url","section":"other","label":"Location URL","type":"string"}]</option_schema>
         <public>true</public>
         <roles/>
         <script><![CDATA[(function() {
@@ -592,14 +591,14 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
         <sys_created_by>matt.dodd</sys_created_by>
         <sys_created_on>2018-07-30 13:57:51</sys_created_on>
         <sys_id>6fd660f2db635b00a16926b38a96197b</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>22</sys_mod_count>
         <sys_name>SNUG Registration</sys_name>
         <sys_package display_value="SNUG Registrations" source="x_snc_snug_rego">8ff1a8b6db235b00a16926b38a96192b</sys_package>
         <sys_policy/>
         <sys_scope display_value="SNUG Registrations">8ff1a8b6db235b00a16926b38a96192b</sys_scope>
         <sys_update_name>sp_widget_6fd660f2db635b00a16926b38a96197b</sys_update_name>
         <sys_updated_by>matt.dodd</sys_updated_by>
-        <sys_updated_on>2018-07-31 00:36:06</sys_updated_on>
+        <sys_updated_on>2018-08-01 01:59:57</sys_updated_on>
         <template><![CDATA[<!-- Top content -->
 <!-- @TODO: ADD FORM VALIDATION -->
 <div class="top-content">
@@ -616,6 +615,8 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
           <div class="form-top">
             <div class="form-top-left">
               <h3>{{c.options.form_header}}</h3>
+              <h4>Date/Time: {{c.options.event_date}}</h4>
+              <h4>Location: <a target="_blank" href="{{c.options.location_url}}">{{c.options.event_location}}</a></h4>
               <p>{{c.options.form_message}}</p>
             </div>
             <div class="form-top-right">
@@ -690,7 +691,7 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
                 <input type="text" 
                        name="phone" 
                        id="phone"
-                       placeholder="Phone Number" 
+                       placeholder="Phone Number (Optional)" 
                        class="form-control" 
                        ng-model="c.data.phone"
                        ng-disabled="c.data.hasContactRecord"
@@ -757,6 +758,7 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
               <div class="clearfix">
               </div>
             </form>
+            <span>* All data collected is purely for the purposes of this event and will not be used for marketing.</span>
           </div>
         </div>
 <!--        <div class="col-sm-8 form-box">

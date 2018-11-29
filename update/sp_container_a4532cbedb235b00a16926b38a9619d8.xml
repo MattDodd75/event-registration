@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update table="sp_container">
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
     <sp_container action="INSERT_OR_UPDATE">
         <background_color/>
         <background_image>a886baf6db2b5b00a16926b38a961979.iix?t=m</background_image>
@@ -37,6 +36,7 @@
         <image_width>1500</image_width>
         <size_bytes>224130</size_bytes>
         <size_compressed>222530</size_compressed>
+        <state/>
         <sys_created_by>matt.dodd</sys_created_by>
         <sys_created_on>2018-07-31 00:25:26</sys_created_on>
         <sys_id>a886baf6db2b5b00a16926b38a961979</sys_id>

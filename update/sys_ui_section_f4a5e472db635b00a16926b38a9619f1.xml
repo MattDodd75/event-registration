@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update>
+<?xml version="1.0" encoding="UTF-8"?><record_update>
     <sys_ui_section caption="" section_id="f4a5e472db635b00a16926b38a9619f1" sys_domain="global" table="x_snc_snug_rego_snug_event" version="3" view="">
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>event_name</element>
             <position>0</position>
             <sys_created_by>matt.dodd</sys_created_by>
-            <sys_created_on>2018-07-31 00:44:31</sys_created_on>
-            <sys_id>50eab63edb2b5b00a16926b38a9619f8</sys_id>
+            <sys_created_on>2018-08-02 08:16:49</sys_created_on>
+            <sys_id>c595f2e3dbefdb00a16926b38a96195d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_snug_rego_snug_event" sys_domain="global" view="Default view">f4a5e472db635b00a16926b38a9619f1</sys_ui_section>
             <sys_updated_by>matt.dodd</sys_updated_by>
-            <sys_updated_on>2018-07-31 00:44:31</sys_updated_on>
+            <sys_updated_on>2018-08-02 08:16:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -19,13 +18,13 @@
             <element>community_url</element>
             <position>1</position>
             <sys_created_by>matt.dodd</sys_created_by>
-            <sys_created_on>2018-07-31 00:44:31</sys_created_on>
-            <sys_id>d0eab63edb2b5b00a16926b38a9619f8</sys_id>
+            <sys_created_on>2018-08-02 08:16:49</sys_created_on>
+            <sys_id>4995f2e3dbefdb00a16926b38a96195d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_snug_rego_snug_event" sys_domain="global" view="Default view">f4a5e472db635b00a16926b38a9619f1</sys_ui_section>
             <sys_updated_by>matt.dodd</sys_updated_by>
-            <sys_updated_on>2018-07-31 00:44:31</sys_updated_on>
+            <sys_updated_on>2018-08-02 08:16:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -33,13 +32,13 @@
             <element>.begin_split</element>
             <position>2</position>
             <sys_created_by>matt.dodd</sys_created_by>
-            <sys_created_on>2018-07-31 00:44:31</sys_created_on>
-            <sys_id>54eab63edb2b5b00a16926b38a9619f8</sys_id>
+            <sys_created_on>2018-08-02 08:16:49</sys_created_on>
+            <sys_id>c995f2e3dbefdb00a16926b38a96195d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_snug_rego_snug_event" sys_domain="global" view="Default view">f4a5e472db635b00a16926b38a9619f1</sys_ui_section>
             <sys_updated_by>matt.dodd</sys_updated_by>
-            <sys_updated_on>2018-07-31 00:44:31</sys_updated_on>
+            <sys_updated_on>2018-08-02 08:16:49</sys_updated_on>
             <sys_user/>
             <type>.begin_split</type>
         </sys_ui_element>
@@ -47,41 +46,55 @@
             <element>event_start</element>
             <position>3</position>
             <sys_created_by>matt.dodd</sys_created_by>
-            <sys_created_on>2018-07-31 00:44:31</sys_created_on>
-            <sys_id>d4eab63edb2b5b00a16926b38a9619f8</sys_id>
+            <sys_created_on>2018-08-02 08:16:49</sys_created_on>
+            <sys_id>4d95f2e3dbefdb00a16926b38a96195d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_snug_rego_snug_event" sys_domain="global" view="Default view">f4a5e472db635b00a16926b38a9619f1</sys_ui_section>
             <sys_updated_by>matt.dodd</sys_updated_by>
-            <sys_updated_on>2018-07-31 00:44:31</sys_updated_on>
+            <sys_updated_on>2018-08-02 08:16:49</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>sponsor</element>
+            <position>4</position>
+            <sys_created_by>matt.dodd</sys_created_by>
+            <sys_created_on>2018-08-02 08:16:49</sys_created_on>
+            <sys_id>cd95f2e3dbefdb00a16926b38a96195d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snug_rego_snug_event" sys_domain="global" view="Default view">f4a5e472db635b00a16926b38a9619f1</sys_ui_section>
+            <sys_updated_by>matt.dodd</sys_updated_by>
+            <sys_updated_on>2018-08-02 08:16:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>4</position>
+            <position>5</position>
             <sys_created_by>matt.dodd</sys_created_by>
-            <sys_created_on>2018-07-31 00:44:31</sys_created_on>
-            <sys_id>58eab63edb2b5b00a16926b38a9619f8</sys_id>
+            <sys_created_on>2018-08-02 08:16:49</sys_created_on>
+            <sys_id>4195f2e3dbefdb00a16926b38a96195e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_snug_rego_snug_event" sys_domain="global" view="Default view">f4a5e472db635b00a16926b38a9619f1</sys_ui_section>
             <sys_updated_by>matt.dodd</sys_updated_by>
-            <sys_updated_on>2018-07-31 00:44:31</sys_updated_on>
+            <sys_updated_on>2018-08-02 08:16:49</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>location</element>
-            <position>5</position>
+            <position>6</position>
             <sys_created_by>matt.dodd</sys_created_by>
-            <sys_created_on>2018-07-31 00:44:31</sys_created_on>
-            <sys_id>d8eab63edb2b5b00a16926b38a9619f8</sys_id>
+            <sys_created_on>2018-08-02 08:16:49</sys_created_on>
+            <sys_id>c195f2e3dbefdb00a16926b38a96195e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_snug_rego_snug_event" sys_domain="global" view="Default view">f4a5e472db635b00a16926b38a9619f1</sys_ui_section>
             <sys_updated_by>matt.dodd</sys_updated_by>
-            <sys_updated_on>2018-07-31 00:44:31</sys_updated_on>
+            <sys_updated_on>2018-08-02 08:16:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

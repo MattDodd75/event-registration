@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update table="sp_instance">
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
     <sp_instance action="INSERT_OR_UPDATE">
         <active>true</active>
         <class_name/>
@@ -17,24 +16,24 @@
         <sys_created_by>matt.dodd</sys_created_by>
         <sys_created_on>2018-07-30 13:58:51</sys_created_on>
         <sys_id>861728f2db635b00a16926b38a961995</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name>ServiceNow User Group - Perth</sys_name>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_name>ServiceNow Community User Group - Perth</sys_name>
         <sys_package display_value="SNUG Registrations" source="x_snc_snug_rego">8ff1a8b6db235b00a16926b38a96192b</sys_package>
         <sys_policy/>
         <sys_scope display_value="SNUG Registrations">8ff1a8b6db235b00a16926b38a96192b</sys_scope>
         <sys_update_name>sp_instance_861728f2db635b00a16926b38a961995</sys_update_name>
         <sys_updated_by>matt.dodd</sys_updated_by>
-        <sys_updated_on>2018-07-30 14:03:47</sys_updated_on>
-        <title>ServiceNow User Group - Perth</title>
+        <sys_updated_on>2018-08-01 02:05:16</sys_updated_on>
+        <title>ServiceNow Community User Group - Perth</title>
         <url/>
         <widget_parameters><![CDATA[{
 	"title": {
-		"value": "ServiceNow User Group - Perth",
-		"displayValue": "ServiceNow User Group - Perth"
+		"value": "ServiceNow Community User Group - Perth",
+		"displayValue": "ServiceNow Community User Group - Perth"
 	},
 	"title_secondary": {
-		"value": "SNUG Registration Page",
-		"displayValue": "SNUG Registration Page"
+		"value": "Registration Page",
+		"displayValue": "Registration Page"
 	},
 	"company_name": {
 		"value": "ServiceNow",
@@ -65,12 +64,12 @@
 		"displayValue": ""
 	},
 	"form_header": {
-		"value": "August 9th @ 4pm - Location TBD",
-		"displayValue": "August 9th @ 4pm - Location TBD"
+		"value": "Event Details",
+		"displayValue": "Event Details"
 	},
 	"form_message": {
-		"value": "Please complete your details to register your attendance",
-		"displayValue": "Please complete your details to register your attendance"
+		"value": "Please provide the details below to register your attendance",
+		"displayValue": "Please provide the details below to register your attendance"
 	},
 	"pass_characters": {
 		"value": "",
@@ -83,6 +82,26 @@
 	"pass_reset_desc": {
 		"value": "",
 		"displayValue": ""
+	},
+	"form_location": {
+		"value": "The BASE (Basement) @ 191 St Georges Tce, Perth",
+		"displayValue": "The BASE (Basement) @ 191 St Georges Tce, Perth"
+	},
+	"form_date": {
+		"value": "Thursday August 9th - 4pm to 6pm",
+		"displayValue": "Thursday August 9th - 4pm to 6pm"
+	},
+	"event_location": {
+		"value": "The BASE (Basement level) - 191 St Georges Tce, Perth",
+		"displayValue": "The BASE (Basement level) - 191 St Georges Tce, Perth"
+	},
+	"event_date": {
+		"value": "Thursday August 9th - 4pm to 6pm",
+		"displayValue": "Thursday August 9th - 4pm to 6pm"
+	},
+	"location_url": {
+		"value": "https://www.google.com.au/maps/place/191+St+Georges+Terrace,+Perth+WA+6000/data=!4m2!3m1!1s0x2a32bad4dfbaf425:0x4bbeb2b007e109f8?sa=X&ved=2ahUKEwjv7cC14MrcAhWIMN4KHTGKDcUQ8gEwAHoECAYQAQ",
+		"displayValue": "https://www.google.com.au/maps/place/191+St+Georges+Terrace,+Perth+WA+6000/data=!4m2!3m1!1s0x2a32bad4dfbaf425:0x4bbeb2b007e109f8?sa=X&ved=2ahUKEwjv7cC14MrcAhWIMN4KHTGKDcUQ8gEwAHoECAYQAQ"
 	}
 }]]></widget_parameters>
     </sp_instance>
